@@ -1,0 +1,44 @@
+{
+  "name": "vue-typestyle-seed",
+  "version": "1.0.0",
+  "description": "Starting point for Vue TSX project",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "start-vue": "webpack-dev-server --config=webpack.vue.js --open",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "awesome-typescript-loader": "5.2.1",
+    "babel-core": "^6.26.3",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "7",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
+    "babel-preset-env": "1.7.0",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "file-loader": "2.0.0",
+    "html-webpack-plugin": "3.2.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "ts-loader": "5.3.1",
+    "typescript": "3.2.2",
+    "url-loader": "1.1.2",
+    "webpack": "4.27.1",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10"
+  },
+  "dependencies": {
+    "csx": "9.0.0",
+    "mobx": "^5.7.0",
+    "mobx-react": "^5.4.2",
+    "typestyle": "2.0.1",
+    "vue": "2.5.18",
+    "vue-class-component": "6.3.2",
+    "vue-property-decorator": "7.2.0"
+  }
+}
