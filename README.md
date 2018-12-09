@@ -10,3 +10,6 @@ Starting project for doing VueJS + TypeStyle using TSX.
 ## Building for deployment
 
 - npm run build
+
+-original vue only impl
+https://github.com/notoriousb1t/vuejs-typestyle-seed
