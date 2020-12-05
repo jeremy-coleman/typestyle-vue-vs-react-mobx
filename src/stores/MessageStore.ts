@@ -1,25 +1,23 @@
-import {observable, action} from 'mobx'
+import { action, makeObservable, observable } from 'mobx'
+
 
 class MessageStore {
 
-    @observable message
+    @observable 
+    message
 
-    @observable messages = [
+    @observable
+    messages = [
         'I ❤️ VueJS',
         'I ❤️ TypeStyle',
         'I ❤️ one file',
-        ]
-
+    ]
 
     constructor(){
+        makeObservable(this)
         this.message = this.messages[this.setRandomIndex()]
     }
 
-//   mounted() {
-//     const input = this.inputRef.current
-//     const len = input.value.length
-//     input.setSelectionRange(len, len)
-//   }
 
     @action
     setRandomIndex = () => Math.floor(Math.random() * this.messages.length)
@@ -29,5 +27,11 @@ class MessageStore {
   
 }
 
-export {MessageStore}
-export default new MessageStore()
+let messageStore = new MessageStore()
+
+
+type IMessageStore = typeof messageStore
+
+export { messageStore, IMessageStore }
+
+export default messageStore

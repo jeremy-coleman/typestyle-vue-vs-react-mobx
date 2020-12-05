@@ -1,19 +1,14 @@
+import { observer } from 'mobx-react'
 import * as React from 'react'
 import { style } from 'typestyle'
-import { colors } from '../styles' 
-
-import {observer, inject} from 'mobx-react'
-
-import {MessageStore} from '../stores/MessageStore'
-
-type Props = {
-  messages?: MessageStore
-};
+import { messageStore } from '../stores/MessageStore'
+import { colors } from '../styles'
 
 
-@inject('messages')
+
+
 @observer
-export class Entry extends React.Component<Props, any>  {
+class Entry extends React.Component  {
   inputRef = React.createRef<HTMLInputElement>()
 
   componentClass = style({
@@ -36,7 +31,7 @@ export class Entry extends React.Component<Props, any>  {
   })
 
   onInputChanged = (eventValue) => {
-    this.props.messages.changeMessage(eventValue)
+    messageStore.changeMessage(eventValue)
   }
   
   render() {
@@ -44,9 +39,11 @@ export class Entry extends React.Component<Props, any>  {
       <div className={this.componentClass}>
         <label> 
           Write something:  
-          <input className={this.inputClass} value={this.props.messages.message} onChange={e => this.onInputChanged(e.target.value)}/>
+          <input className={this.inputClass} value={messageStore.message} onChange={e => this.onInputChanged(e.target.value)}/>
         </label>   
       </div>
     )
   }
 }
+
+export {Entry}

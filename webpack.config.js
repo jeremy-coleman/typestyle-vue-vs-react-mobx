@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var basePath = __dirname;
 
@@ -9,7 +9,7 @@ module.exports = {
   mode: 'development',
   context: path.join(basePath, 'src'),
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js', ".jsx", '.ts', '.tsx'],
   },
   entry: {
     app: './main.tsx'
@@ -22,13 +22,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.[tj]sx?$/,
         exclude: /node_modules/,
         use: [
           //'babel-loader',
           {loader: 'ts-loader',options: {transpileOnly: true}}],
       },
       {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      }
+
+/*       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
@@ -43,7 +60,8 @@ module.exports = {
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
-      }
+      } */
+
     ]
   },
 

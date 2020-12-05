@@ -1,27 +1,11 @@
+import { observer } from 'mobx-react'
 import * as React from 'react'
-
-import {Provider} from 'mobx-react'
-
 import { style } from 'typestyle'
 import { Entry, Hero } from '.'
 import { colors } from '../styles'
 
-import {observer, inject} from 'mobx-react'
 
-import messageStore from '../stores/MessageStore'
-import {MessageStore} from '../stores/MessageStore'
-
-
-type Props = {
-  messages?: MessageStore
-};
-
-
-
-@inject('messages')
-@observer
-export class App extends React.Component<Props, any>  {
-  
+export class App extends React.Component {
   styles = style({
     backgroundColor: colors.background,
     color: colors.foreground,
@@ -38,6 +22,15 @@ export class App extends React.Component<Props, any>  {
     )
   }
 }
+
+
+@observer
+export class AppContainer extends React.Component<any, any>  {
+  render() {
+    return <App/>
+  }
+}
+
 
 //you can also do 
 // let stores = {
@@ -75,14 +68,3 @@ export class App extends React.Component<Props, any>  {
 // i've found it best practice to name it as a Value and not Store. aka ToggleValue
 // then you can have class instances such as drawerToggle = new ToggleValue(), dropDownToggle = new ToggleValue(), etc.
 //
-
-@observer
-export class AppContainer extends React.Component<any, any>  {
-  render() {
-    return (
-      <Provider messages={messageStore}>
-        <App/>
-      </Provider>
-    )
-  }
-}

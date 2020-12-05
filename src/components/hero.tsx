@@ -1,22 +1,17 @@
-import * as React from 'react'
-
-import {observer, inject} from 'mobx-react'
-import { style } from 'typestyle'
 import { viewHeight } from 'csx'
+import { observer } from 'mobx-react'
+import * as React from 'react'
+import { style } from 'typestyle'
+import { messageStore } from '../stores/MessageStore'
 import { colors } from '../styles'
+
 
 const heroHeight = viewHeight(35)
 
-import {MessageStore} from '../stores/MessageStore'
 
-type Props = {
-  messages?: MessageStore
-};
 
-@inject('messages')
 @observer
-export class Hero extends React.Component<Props, any> {
-
+class Hero extends React.Component {
   componentClass = style({
     backgroundColor: colors.foreground,
     color: colors.background, 
@@ -31,8 +26,10 @@ export class Hero extends React.Component<Props, any> {
   render() {
     return (<div className={this.componentClass}>
       <h1 className={this.heroClass}>
-        {this.props.messages.message}
+        {messageStore.message}
       </h1>
     </div>)  
   }
 }
+
+export { Hero }
